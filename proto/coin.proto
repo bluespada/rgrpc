@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package coin;
+
+message ReciveRequest {
+    uint32 tx_id = 1;
+    uint32 tx_from = 2;
+    uint32 tx_to = 3;
+    int64 tx_total = 4;
+
+}
+
+message ReciveResponse {
+    bool tx_success = 1;
+    uint32 tx_from = 2;
+    uint32 tx_to = 3;
+    uint32 tx_total = 4;
+    uint32 tx_id = 5;
+}
+
+message SupplyRequest {
+    
+}
+
+message SupplyResponse {
+    int64 total_supply = 1;
+}
+
+service Coin {
+    rpc supply(SupplyRequest) returns (SupplyResponse);
+    rpc transaction(ReciveRequest) returns (ReciveResponse);
+}
+
